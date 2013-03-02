@@ -1,16 +1,14 @@
 // Copyright (c) 2013 Eric Robert.
 // All rights reserved.
 
-#include "Plugin.hpp"
 #include "Display.hpp"
 
+#include <exception>
 #include <iostream>
 
 int main(int argc, char ** argv) {
   try {
-    Plugin plugin("Plugin-Sample.dll");
-    std::cout << "result: " << plugin.initialize();
-    Display display(argc, argv);
+    Display display(argc, argv, 128, 96);
     display.main();
   }
   catch(std::exception & e) {

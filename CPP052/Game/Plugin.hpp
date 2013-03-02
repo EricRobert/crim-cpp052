@@ -6,14 +6,19 @@
 
 #include "Library.hpp"
 
+class Factory;
+
 class Plugin : public Library
 {
 public:
   Plugin(char const * name);
-  int initialize();
+
+  Factory * getFactory() const {
+    return factory;
+  }
 
 private:
-  CallType callback;
+  Factory * factory;
 };
 
 #endif

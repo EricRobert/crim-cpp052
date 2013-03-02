@@ -4,12 +4,14 @@
 #include "Plugin.hpp"
 
 Plugin::Plugin(char const * name) : Library(name) {
-  callback = getSymbol("initialize");
-  if(!callback) {
+  typedef Factory * (* CallType)();
+  CallType function = reinterpret_cast<CallType>(getSymbol("initialize"));
+  if(!function) {
     throw std::exception("Cannot find 'initialize' symbol");
   }
-}
 
-int Plugin::initialize() {
-  return (*callback)();
+  factory = function();
+  if(!factory) {
+    throw std::exception("Cannot create factory");
+  }
 }

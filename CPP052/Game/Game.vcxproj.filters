@@ -27,6 +27,12 @@
     <ClCompile Include="Library.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="World.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library.hpp">
@@ -36,6 +42,15 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Display.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="World.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bot.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

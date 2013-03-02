@@ -1,13 +1,9 @@
 // Copyright (c) 2013 Eric Robert.
 // All rights reserved.
 
-#include <iostream>
+#include "../Game/Bot.hpp"
+#include "../Game/Factory.hpp"
 
-extern "C" {
-  __declspec(dllexport) int initialize();
-}
-
-int initialize() {
-  std::cout << "initialize" << std::endl;
+extern "C" __declspec(dllexport) Factory * initialize() {
   return 0;
 }

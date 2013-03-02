@@ -4,11 +4,18 @@
 #ifndef DISPLAY__INCLUDED
 #define DISPLAY__INCLUDED
 
+#include "World.hpp"
+
 class Display
 {
 public:
-  Display(int argc, char ** argv);
+  Display(int argc, char ** argv, int x, int y);
+
   void main();
+  void draw();
+
+private:
+  World world;
 };
 
 #endif

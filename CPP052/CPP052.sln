@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Game", "Game\Game.vcxproj", "{98FF7D58-A4C7-44AE-834D-F1B7F496FE06}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Plugin-Sample", "Plugin-Sample\Plugin-Sample.vcxproj", "{BA1A9B64-11A0-4A4B-A2AC-94EFE49FCD12}"
+	ProjectSection(ProjectDependencies) = postProject
+		{98FF7D58-A4C7-44AE-834D-F1B7F496FE06} = {98FF7D58-A4C7-44AE-834D-F1B7F496FE06}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Stack", "Stack\Stack.vcxproj", "{94FA4D8A-E781-41FE-9DFB-B1F7FBEB7C2F}"
 EndProject
