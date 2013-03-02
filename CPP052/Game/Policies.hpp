@@ -9,7 +9,15 @@
 struct RandomSpeed
 {
   RandomSpeed() {
-    speed = 0.0001f * (std::rand() % 100);
+    random();
+  }
+
+  RandomSpeed(RandomSpeed const & other) {
+    random();
+  }
+
+  void random() {
+    speed = 0.00005f * (std::rand() % 100);
   }
 
   float getSpeed() {
@@ -44,6 +52,21 @@ struct RandomDirection
 
   float x;
   float y;
+};
+
+struct SwarmSpeed : public RandomSpeed
+{
+  SwarmSpeed() : spawn(true) {
+  }
+
+  SwarmSpeed(SwarmSpeed const & other) : spawn(false) {
+  }
+
+  float getSpeed() {
+    return spawn ? 0 : RandomSpeed::getSpeed();
+  }
+
+  bool spawn;
 };
 
 #endif

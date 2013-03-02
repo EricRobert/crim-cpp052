@@ -3,6 +3,7 @@
 
 #include "Plugin.hpp"
 #include "Factory.hpp"
+#include "World.hpp"
 
 #include <algorithm>
 
@@ -17,6 +18,12 @@ Plugin::Plugin(char const * name) : Library(name) {
   if(!factory) {
     throw std::exception("Cannot create factory");
   }
+}
+
+void Plugin::spawn(World * world) {
+  int x = std::rand() % world->getWidth();
+  int y = std::rand() % world->getHeight();
+  factory->spawn((float) x, (float) y);
 }
 
 void Plugin::spawn(float x, float y) {

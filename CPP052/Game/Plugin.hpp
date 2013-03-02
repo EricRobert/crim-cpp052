@@ -14,6 +14,7 @@ class Plugin : public Library
 public:
   Plugin(char const * name);
 
+  void spawn(World * world);
   void spawn(float x, float y);
   void draw();
   void step(World * world);

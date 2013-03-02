@@ -60,15 +60,29 @@ private:
   float energy;
 };
 
-template<typename T>
-  class GenericBot : public Bot
+template<typename T, typename SpeedPolicy, typename DirectionPolicy>
+  class GenericBot
+    : public Bot, public SpeedPolicy, public DirectionPolicy
   {
   public:
     GenericBot(float _red, float _green, float _blue, float _x, float _y, float _growth = 0.5f) : Bot(_red, _green, _blue, _x, _y, _growth) {
     }
 
+    GenericBot(GenericBot const & other) : Bot(other), SpeedPolicy(other), DirectionPolicy(other) {
+    }
+
     T * clone() const {
       return new T(static_cast<T const &>(*this));
+    }
+
+    void think(World * world) {
+      float dx;
+      float dy;
+      this->getDirection(dx, dy);
+      float w = this->getSpeed();
+      dx *= w;
+      dy *= w;
+      move(dx, dy);
     }
   };
 

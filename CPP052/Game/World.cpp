@@ -11,7 +11,8 @@
 
 World::World(int _x, int _y) : x(_x), y(_y), grid(_x * _y, 0) {
   items.push_back("Plugin-Sample.dll");
-  items.back().spawn(x / 2.0f, y / 2.0f);
+  items.push_back("Plugin-MegaBot.dll");
+  std::for_each(items.begin(), items.end(), std::bind2nd(std::mem_fun_ref(&Plugin::spawn), this));
 }
 
 void World::step() {
