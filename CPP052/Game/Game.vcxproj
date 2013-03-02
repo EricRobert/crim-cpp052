@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bot.hpp" />
+    <ClInclude Include="Bots.hpp" />
     <ClInclude Include="Display.hpp" />
     <ClInclude Include="Factory.hpp" />
     <ClInclude Include="Library.hpp" />

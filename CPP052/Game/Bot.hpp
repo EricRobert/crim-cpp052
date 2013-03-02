@@ -6,8 +6,15 @@
 
 class World;
 
+// interface de librairie dynamique
+#ifndef GAME_EXPORTS
+  #define DLLAPI __declspec(dllimport)
+#else
+  #define DLLAPI __declspec(dllexport)
+#endif
+
 // base d'extension externe
-class Bot
+class DLLAPI Bot
 {
 public:
   Bot(float _red, float _green, float _blue, float _x, float _y);

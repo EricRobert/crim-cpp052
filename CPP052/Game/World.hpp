@@ -4,6 +4,8 @@
 #ifndef WORLD__INCLUDED
 #define WORLD__INCLUDED
 
+#include "Plugin.hpp"
+
 #include <vector>
 
 class Bot;
@@ -27,6 +29,7 @@ public:
   }
 
 private:
+  std::vector<Plugin> dlls;
   std::vector<Bot *> items;
 
   int x;

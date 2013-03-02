@@ -10,6 +10,9 @@ class Bot;
 class Factory
 {
 public:
+  virtual ~Factory() {
+  }
+
   virtual Bot * spawn(float x, float y) = 0;
 };
 

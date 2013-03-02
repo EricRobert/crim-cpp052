@@ -53,5 +53,8 @@
     <ClInclude Include="Factory.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="Bots.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

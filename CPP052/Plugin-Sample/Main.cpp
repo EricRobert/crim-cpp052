@@ -2,8 +2,28 @@
 // All rights reserved.
 
 #include "../Game/Bot.hpp"
-#include "../Game/Factory.hpp"
+#include "../Game/Bots.hpp"
+
+#include <algorithm>
+
+class SampleBot : public Bot
+{
+public:
+  SampleBot(float x, float y) : Bot(1.0f, 0.0f, 0.0f, x, y) {
+    wx = 0.0001f * ((std::rand() % 100) - 50);
+    wy = 0.0001f * ((std::rand() % 100) - 50);
+  }
+
+private:
+  void think(World * world) {
+    move(wx, wy);
+  }
+
+  float wx;
+  float wy;
+};
 
 extern "C" __declspec(dllexport) Factory * initialize() {
-  return 0;
+  static Bots<SampleBot> factory;
+  return &factory;
 }
