@@ -4,6 +4,7 @@
 #ifndef FACTORY__INCLUDED
 #define FACTORY__INCLUDED
 
+class World;
 class Bot;
 
 // interface de création de bots
@@ -14,6 +15,7 @@ public:
   }
 
   virtual Bot * spawn(float x, float y) = 0;
+  virtual void step(World * world) = 0;
 };
 
 #endif

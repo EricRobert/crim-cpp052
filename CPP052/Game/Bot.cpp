@@ -23,7 +23,6 @@ void Bot::draw() {
 }
 
 void Bot::step(World * world) {
-  think(world);
   x += dx;
   y += dy;
   world->wrap(x, y);

@@ -14,11 +14,11 @@ public:
     wy = 0.0001f * ((std::rand() % 100) - 50);
   }
 
-private:
   void think(World * world) {
     move(wx, wy);
   }
 
+private:
   float wx;
   float wy;
 };

@@ -10,15 +10,12 @@
 #include <algorithm>
 
 World::World(int _x, int _y) : x(_x), y(_y) {
-  dlls.push_back("Plugin-Sample.dll");
-  Bot * item = dlls.back().getFactory()->spawn(x / 2.0f, y / 2.0f);
-  items.push_back(item);
+  items.push_back("Plugin-Sample.dll");
+  items.back().spawn(x / 2.0f, y / 2.0f);
 }
 
 void World::step() {
-  for(std::vector<Bot *>::iterator i = items.begin(); i != items.end(); ++i) {
-    (*i)->step(this);
-  }
+  std::for_each(items.begin(), items.end(), std::bind2nd(std::mem_fun_ref(&Plugin::step), this));
 }
 
 void World::draw() {
@@ -27,9 +24,7 @@ void World::draw() {
   glOrtho(0, x, 0, y, 0, 10);
   glMatrixMode(GL_MODELVIEW);
 
-  for(std::vector<Bot *>::iterator i = items.begin(); i != items.end(); ++i) {
-    (*i)->draw();
-  }
+  std::for_each(items.begin(), items.end(), std::mem_fun_ref(&Plugin::draw));
 }
 
 void World::wrap(float & i, float & j) {

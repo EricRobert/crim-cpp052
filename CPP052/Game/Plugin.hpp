@@ -6,6 +6,10 @@
 
 #include "Library.hpp"
 
+#include <vector>
+
+class World;
+class Bot;
 class Factory;
 
 class Plugin : public Library
@@ -13,12 +17,15 @@ class Plugin : public Library
 public:
   Plugin(char const * name);
 
-  Factory * getFactory() const {
-    return factory;
-  }
+  void spawn(float x, float y);
+  void draw();
+  void step(World * world);
 
 private:
   Factory * factory;
+
+  typedef std::vector<Bot *> ListType;
+  ListType items;
 };
 
 #endif

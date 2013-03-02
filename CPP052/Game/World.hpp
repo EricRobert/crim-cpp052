@@ -6,10 +6,6 @@
 
 #include "Plugin.hpp"
 
-#include <vector>
-
-class Bot;
-
 // représentation du monde de bots
 class World
 {
@@ -29,8 +25,7 @@ public:
   }
 
 private:
-  std::vector<Plugin> dlls;
-  std::vector<Bot *> items;
+  std::vector<Plugin> items;
 
   int x;
   int y;

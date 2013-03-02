@@ -19,6 +19,23 @@ template<typename T>
       return item;
     }
 
+    void step(World * world) {
+      struct lambda {
+        lambda(World * world) : world(world) {
+        }
+
+        void operator()(std::unique_ptr<T> const & p) const {
+          T * item = p.get();
+          item->think(world);
+          item->step(world);
+        }
+
+        World * world;
+      };
+
+      std::for_each(items.begin(), items.end(), lambda(world));
+    }
+
   private:
     std::vector<std::unique_ptr<T>> items;
   };

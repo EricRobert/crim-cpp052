@@ -35,8 +35,6 @@ public:
   void step(World * world);
 
 private:
-  virtual void think(World * world) = 0;
-
   float red;
   float green;
   float blue;
