@@ -6,10 +6,7 @@
 
 #include "Library.hpp"
 
-#include <vector>
-
 class World;
-class Bot;
 class Factory;
 
 class Plugin : public Library
@@ -23,9 +20,6 @@ public:
 
 private:
   Factory * factory;
-
-  typedef std::vector<Bot *> ListType;
-  ListType items;
 };
 
 #endif

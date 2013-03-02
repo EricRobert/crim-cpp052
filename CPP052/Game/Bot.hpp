@@ -17,7 +17,7 @@ class World;
 class DLLAPI Bot
 {
 public:
-  Bot(float _red, float _green, float _blue, float _x, float _y);
+  Bot(float _red, float _green, float _blue, float _x, float _y, float _growth = 0.5f);
 
   virtual ~Bot() {
   }
@@ -30,9 +30,14 @@ public:
     return y;
   }
 
+  bool isOk() const {
+    return energy > 0;
+  }
+
   void move(float _dx, float _dy);
   void draw();
   void step(World * world);
+  bool split();
 
 private:
   float red;
@@ -42,6 +47,20 @@ private:
   float y;
   float dx;
   float dy;
+  float growth;
+  float energy;
 };
+
+template<typename T>
+  class GenericBot : public Bot
+  {
+  public:
+    GenericBot(float _red, float _green, float _blue, float _x, float _y, float _growth = 0.5f) : Bot(_red, _green, _blue, _x, _y, _growth) {
+    }
+
+    T * clone() const {
+      return new T(static_cast<T const &>(*this));
+    }
+  };
 
 #endif

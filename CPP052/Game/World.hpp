@@ -6,6 +6,8 @@
 
 #include "Plugin.hpp"
 
+#include <vector>
+
 // représentation du monde de bots
 class World
 {

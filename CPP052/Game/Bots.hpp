@@ -13,31 +13,42 @@ template<typename T>
   class Bots : public Factory
   {
   public:
-    Bot * spawn(float x, float y) {
+    void spawn(float x, float y) {
       T * item = new T(x, y);
       items.push_back(std::unique_ptr<T>(item));
-      return item;
+    }
+
+    void draw() {
+      for(ListType::iterator i = items.begin(); i != items.end(); ++i) {
+        T & item = **i;
+        item.draw();
+      }
     }
 
     void step(World * world) {
-      struct lambda {
-        lambda(World * world) : world(world) {
-        }
-
-        void operator()(std::unique_ptr<T> const & p) const {
-          T * item = p.get();
+      int i = 0;
+      while(i != items.size()) {
+        T * item = items[i].get();
+        if(item->isOk()) {
           item->think(world);
           item->step(world);
+
+          if(item->split()) {
+            items.push_back(std::unique_ptr<T>(item->clone()));
+          }
+
+          ++i;
         }
-
-        World * world;
-      };
-
-      std::for_each(items.begin(), items.end(), lambda(world));
+        else {
+          std::swap(items[i], items.back());
+          items.pop_back();
+        }
+      }
     }
 
   private:
-    std::vector<std::unique_ptr<T>> items;
+    typedef std::vector<std::unique_ptr<T>> ListType;
+    ListType items;
   };
 
 #endif

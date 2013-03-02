@@ -7,7 +7,7 @@
 // glut
 #include <GL/glut.h>
 
-Bot::Bot(float _red, float _green, float _blue, float _x, float _y) : red(_red), green(_green), blue(_blue), x(_x), y(_y), dx(0), dy(0) {
+Bot::Bot(float _red, float _green, float _blue, float _x, float _y, float _growth) : red(_red), green(_green), blue(_blue), x(_x), y(_y), dx(0), dy(0), growth(_growth), energy(0.5f) {
 }
 
 void Bot::move(float _dx, float _dy) {
@@ -23,7 +23,18 @@ void Bot::draw() {
 }
 
 void Bot::step(World * world) {
+  float d = std::sqrt(dx * dx + dy * dy);
+  energy = energy + (1.0f - d * 400.0f) * growth * 0.001f;
   x += dx;
   y += dy;
   world->wrap(x, y);
+}
+
+bool Bot::split() {
+  if(energy < 1.0f) {
+    return false;
+  }
+
+  energy /= 2.0f;
+  return true;
 }

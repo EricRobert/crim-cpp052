@@ -3,7 +3,6 @@
 
 #include "Plugin.hpp"
 #include "Factory.hpp"
-#include "Bot.hpp"
 
 #include <algorithm>
 
@@ -21,14 +20,11 @@ Plugin::Plugin(char const * name) : Library(name) {
 }
 
 void Plugin::spawn(float x, float y) {
-  Bot * item = factory->spawn(x, y);
-  if(item) {
-    items.push_back(item);
-  }
+  factory->spawn(x, y);
 }
 
 void Plugin::draw() {
-  std::for_each(items.begin(), items.end(), std::mem_fun(&Bot::draw));
+  factory->draw();
 }
 
 void Plugin::step(World * world) {

@@ -6,10 +6,18 @@
 
 #include <algorithm>
 
-class SampleBot : public Bot
+class SampleBot : public GenericBot<SampleBot>
 {
 public:
-  SampleBot(float x, float y) : Bot(1.0f, 0.0f, 0.0f, x, y) {
+  SampleBot(float x, float y) : GenericBot(1.0f, 0.0f, 0.0f, x, y) {
+    random();
+  }
+
+  SampleBot(SampleBot const & other) : GenericBot(other) {
+    random();
+  }
+
+  void random() {
     wx = 0.0001f * ((std::rand() % 100) - 50);
     wy = 0.0001f * ((std::rand() % 100) - 50);
   }

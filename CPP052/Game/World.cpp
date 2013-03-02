@@ -2,7 +2,6 @@
 // All rights reserved.
 
 #include "World.hpp"
-#include "Bot.hpp"
 #include "Factory.hpp"
 
 // glut
