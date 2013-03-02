@@ -40,6 +40,7 @@ template<typename T>
           ++i;
         }
         else {
+          items[i]->wipe(world);
           std::swap(items[i], items.back());
           items.pop_back();
         }

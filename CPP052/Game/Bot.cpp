@@ -25,9 +25,7 @@ void Bot::draw() {
 void Bot::step(World * world) {
   float d = std::sqrt(dx * dx + dy * dy);
   energy = energy + (1.0f - d * 400.0f) * growth * 0.001f;
-  x += dx;
-  y += dy;
-  world->wrap(x, y);
+  world->move(x, y, dx, dy, this);
 }
 
 bool Bot::split() {
@@ -37,4 +35,21 @@ bool Bot::split() {
 
   energy /= 2.0f;
   return true;
+}
+
+void Bot::kill(Bot * other) {
+  energy += other->energy;
+  other->energy = 0;
+}
+
+void Bot::wipe(World * world) {
+  world->wipe(this);
+}
+
+float Bot::attack(Bot * other) {
+  return energy;
+}
+
+float Bot::defend(Bot * other) {
+  return energy;
 }

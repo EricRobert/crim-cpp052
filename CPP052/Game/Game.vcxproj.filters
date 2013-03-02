@@ -56,5 +56,8 @@
     <ClInclude Include="Bots.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="Policies.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

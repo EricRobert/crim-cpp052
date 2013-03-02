@@ -30,6 +30,10 @@ public:
     return y;
   }
 
+  float getEnergy() const {
+    return energy;
+  }
+
   bool isOk() const {
     return energy > 0;
   }
@@ -38,6 +42,11 @@ public:
   void draw();
   void step(World * world);
   bool split();
+  void kill(Bot * other);
+  void wipe(World * world);
+
+  virtual float attack(Bot * other);
+  virtual float defend(Bot * other);
 
 private:
   float red;
