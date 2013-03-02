@@ -13,7 +13,7 @@ public:
   int initialize();
 
 private:
-  FARPROC callback;
+  CallType callback;
 };
 
 #endif

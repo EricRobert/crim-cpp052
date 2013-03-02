@@ -4,11 +4,12 @@
 #include "Plugin.hpp"
 
 Plugin::Plugin(char const * name) : Library(name) {
-  if(library) {
-    callback = GetProcAddress(library, "initialize");
+  callback = getSymbol("initialize");
+  if(!callback) {
+    throw std::exception("Cannot find 'initialize' symbol");
   }
 }
 
 int Plugin::initialize() {
-  return callback ? (*callback)() : 0;
+  return (*callback)();
 }

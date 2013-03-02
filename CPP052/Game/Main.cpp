@@ -7,8 +7,16 @@
 #include <iostream>
 
 int main(int argc, char ** argv) {
-  Plugin plugin("Plugin-Sample.dll");
-  std::cout << "result: " << plugin.initialize();
-  Display display(argc, argv);
-  display.main();
+  try {
+    Plugin plugin("Plugin-Sample.dll");
+    std::cout << "result: " << plugin.initialize();
+    Display display(argc, argv);
+    display.main();
+  }
+  catch(std::exception & e) {
+    std::cerr << "Error: " << e.what() << std::endl;
+  }
+  catch(...) {
+    std::cerr << "Error: Fatal" << std::endl;
+  }
 }

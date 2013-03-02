@@ -3,39 +3,38 @@
 
 #include "Library.hpp"
 
-Library::Library() : library(0) {
+Library::Library(char const * filename) : name(filename) {
+  library = LoadLibrary(name.c_str());
+  if(!library) {
+    throw std::exception("Cannot load dynamic library");
+  }
 }
 
-Library::Library(char const * filename) : library(0) {
-  load(filename);
-}
-
-Library::Library(Library const & other) {
-  load(other.name.c_str());
+Library::Library(Library const & other) : name(other.name) {
+  library = LoadLibrary(name.c_str());
 }
 
 Library & Library::operator=(Library const & other) {
   if(this != &other) {
-    unload();
-    load(other.name.c_str());
+    Library copy(other);
+    swap(copy);
   }
 
   return *this;
 }
 
 Library::~Library() {
-  unload();
-}
-
-void Library::load(TCHAR const * filename) {
-  unload();
-  name = filename;
-  library = LoadLibrary(filename);
-}
-
-void Library::unload() {
   if(library) {
     FreeLibrary(library);
     library = 0;
   }
+}
+
+void Library::swap(Library & other) {
+  std::swap(name, other.name);
+  std::swap(library, other.library);
+}
+
+Library::CallType Library::getSymbol(char const * id) const {
+  return GetProcAddress(library, id);
 }

@@ -14,7 +14,6 @@
 class Library
 {
 public:
-  Library();
   Library(char const * filename);
 
   Library(Library const & other);
@@ -22,10 +21,12 @@ public:
 
   ~Library();
 
-  void load(char const * filename);
-  void unload();
+  void swap(Library & other);
 
-protected:
+  typedef int (__stdcall * CallType)();
+  CallType getSymbol(char const * id) const;
+
+private:
   std::string name;
   HMODULE library;
 };
