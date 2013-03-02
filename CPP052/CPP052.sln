@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Game", "Game\Game.vcxproj", "{98FF7D58-A4C7-44AE-834D-F1B7F496FE06}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Plugin-Sample", "Plugin-Sample\Plugin-Sample.vcxproj", "{BA1A9B64-11A0-4A4B-A2AC-94EFE49FCD12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -13,6 +15,10 @@ Global
 		{98FF7D58-A4C7-44AE-834D-F1B7F496FE06}.Debug|Win32.Build.0 = Debug|Win32
 		{98FF7D58-A4C7-44AE-834D-F1B7F496FE06}.Release|Win32.ActiveCfg = Release|Win32
 		{98FF7D58-A4C7-44AE-834D-F1B7F496FE06}.Release|Win32.Build.0 = Release|Win32
+		{BA1A9B64-11A0-4A4B-A2AC-94EFE49FCD12}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BA1A9B64-11A0-4A4B-A2AC-94EFE49FCD12}.Debug|Win32.Build.0 = Debug|Win32
+		{BA1A9B64-11A0-4A4B-A2AC-94EFE49FCD12}.Release|Win32.ActiveCfg = Release|Win32
+		{BA1A9B64-11A0-4A4B-A2AC-94EFE49FCD12}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
