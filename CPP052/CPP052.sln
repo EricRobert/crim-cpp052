@@ -5,6 +5,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Game", "Game\Game.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Plugin-Sample", "Plugin-Sample\Plugin-Sample.vcxproj", "{BA1A9B64-11A0-4A4B-A2AC-94EFE49FCD12}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Stack", "Stack\Stack.vcxproj", "{94FA4D8A-E781-41FE-9DFB-B1F7FBEB7C2F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -19,6 +21,10 @@ Global
 		{BA1A9B64-11A0-4A4B-A2AC-94EFE49FCD12}.Debug|Win32.Build.0 = Debug|Win32
 		{BA1A9B64-11A0-4A4B-A2AC-94EFE49FCD12}.Release|Win32.ActiveCfg = Release|Win32
 		{BA1A9B64-11A0-4A4B-A2AC-94EFE49FCD12}.Release|Win32.Build.0 = Release|Win32
+		{94FA4D8A-E781-41FE-9DFB-B1F7FBEB7C2F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{94FA4D8A-E781-41FE-9DFB-B1F7FBEB7C2F}.Debug|Win32.Build.0 = Debug|Win32
+		{94FA4D8A-E781-41FE-9DFB-B1F7FBEB7C2F}.Release|Win32.ActiveCfg = Release|Win32
+		{94FA4D8A-E781-41FE-9DFB-B1F7FBEB7C2F}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
