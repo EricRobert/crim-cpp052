@@ -90,7 +90,15 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Display.cpp" />
+    <ClCompile Include="Library.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Plugin.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Display.hpp" />
+    <ClInclude Include="Library.hpp" />
+    <ClInclude Include="Plugin.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
