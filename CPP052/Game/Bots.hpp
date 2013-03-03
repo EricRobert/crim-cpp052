@@ -18,10 +18,24 @@ template<typename T>
       items.push_back(std::unique_ptr<T>(item));
     }
 
+    template<typename U>
+      typename std::enable_if<U::DynamicColor::Result == false>::type
+      draw(U & item) {
+        item.draw();
+      }
+
+    template<typename U>
+      typename std::enable_if<U::DynamicColor::Result != false>::type
+      draw(U & item) {
+        float r, g, b;
+        item.setColor(r, g, b);
+        item.draw(r, g, b);
+      }
+
     void draw() {
       for(ListType::iterator i = items.begin(); i != items.end(); ++i) {
         T & item = **i;
-        item.draw();
+        draw(item);
       }
     }
 

@@ -40,6 +40,7 @@ public:
 
   void move(float _dx, float _dy);
   void draw();
+  void draw(float red, float green, float blue);
   void step(World * world);
   bool split();
   void kill(Bot * other);
@@ -65,6 +66,9 @@ template<typename T, typename SpeedPolicy, typename DirectionPolicy>
     : public Bot, public SpeedPolicy, public DirectionPolicy
   {
   public:
+    GenericBot(float _x, float _y, float _growth = 0.5f) : Bot(0.0f, 0.0f, 0.0f, _x, _y, _growth) {
+    }
+
     GenericBot(float _red, float _green, float _blue, float _x, float _y, float _growth = 0.5f) : Bot(_red, _green, _blue, _x, _y, _growth) {
     }
 
@@ -84,6 +88,19 @@ template<typename T, typename SpeedPolicy, typename DirectionPolicy>
       dy *= w;
       move(dx, dy);
     }
+
+    class DynamicColor
+    {
+      struct Pass { char dummy[1]; };
+      struct Fail { char dummy[2]; };
+
+      template<typename U, U> struct foo;
+      template<typename U> static Pass checker(foo<void (U::*)(float &, float &, float &), &U::setColor> *);
+      template<typename U> static Fail checker(...);
+
+    public:
+      static const bool Result = sizeof(checker<T>(0)) == sizeof(Pass);
+    };
   };
 
 #endif

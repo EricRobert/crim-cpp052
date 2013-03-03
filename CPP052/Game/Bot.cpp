@@ -16,6 +16,10 @@ void Bot::move(float _dx, float _dy) {
 }
 
 void Bot::draw() {
+  draw(red, green, blue);
+}
+
+void Bot::draw(float red, float green, float blue) {
   glColor3f(red, green, blue);
   glLoadIdentity();
   glTranslatef(x, y, 0);

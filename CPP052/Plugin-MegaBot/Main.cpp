@@ -7,8 +7,21 @@
 
 struct MegaBot : public GenericBot<MegaBot, SwarmSpeed, RandomDirection>
 {
-  MegaBot(float x, float y) : GenericBot(0.0f, 1.0f, 0.0f, x, y) {
+  MegaBot(float x, float y) : GenericBot(x, y), green(0.5f), color(0.01f) {
   }
+
+  void setColor(float & r, float & g, float & b) {
+    green += color;
+    if(green <= 0.25f || green >= 1.0f) {
+      color = -color;
+    }
+
+    g = green;
+    r = b = 0.0f;
+  }
+
+  float green;
+  float color;
 };
 
 extern "C" __declspec(dllexport) Factory * initialize() {
